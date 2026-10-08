@@ -7,12 +7,19 @@ at Gaslamp on 3rd, Twin Falls — designed to be built entirely in **Elementor F
 
 | File | What it is |
 |---|---|
+| `elementor-template/trivia-night-2027-elementor.json` | **Importable Elementor template** — the whole page, 13 sections, free widgets only |
+| `elementor-template/IMPORT.md` | Import steps and the 10 things to do after importing |
+| `elementor-template/build-template.py` | Generator for the JSON — edit this, not the JSON |
 | `ELEMENTOR-BUILD-GUIDE.md` | Section-by-section build instructions: containers, widgets, exact settings, mobile pass, launch checklist |
 | `copy-deck.md` | Every line of copy, paste-ready, with `[PLACEHOLDERS]` marked |
 | `additional-css.css` | Paste into **Appearance → Customize → Additional CSS** |
 | `countdown-widget.html` | Free replacement for Elementor Pro's Countdown widget (HTML widget) |
 | `sticky-mobile-cta.html` | Free replacement for Pro's sticky CTA bar (HTML widget) |
 | `assets/` | Images and the client's sponsorship PDF |
+
+**Fastest path:** paste `additional-css.css` into Appearance → Customize → Additional CSS, then
+import `elementor-template/trivia-night-2027-elementor.json` and follow `elementor-template/IMPORT.md`.
+The build guide is there if you'd rather assemble it by hand or need to understand a decision.
 
 The **visual design** lives in a Claude Artifact canvas — the full page design plus a brand-kit
 board with the colour/type values to paste into Elementor Site Settings:

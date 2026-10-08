@@ -1,0 +1,149 @@
+/* ===================================================================
+   Trivia Night & Auction 2027 — Idaho Playground Project
+   Paste into: Appearance → Customize → Additional CSS
+   Apply a class via Elementor → Advanced tab → CSS Classes
+   =================================================================== */
+
+:root {
+  --tn-plum:    #1E1033;
+  --tn-black:   #140B22;
+  --tn-magenta: #B2185F;
+  --tn-teal:    #00767A;
+  --tn-indigo:  #4A55B5;
+  --tn-orange:  #C96A00;
+  --tn-sky:     #1B7FAA;
+  --tn-gold:    #FFC63F;
+  --tn-pink:    #FF4FB0;
+  --tn-lilac:   #F6F4FA;
+  --tn-body:    #6B6382;
+  --tn-muted:   #8A80A3;
+}
+
+/* --- Section rhythm ------------------------------------------------ */
+.tn-section { padding: 96px 24px; }
+@media (max-width: 767px) {
+  .tn-section { padding: 56px 20px; }
+}
+
+/* --- Cards --------------------------------------------------------- */
+.tn-card {
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(30, 16, 51, 0.08);
+}
+.tn-dashed {
+  border: 2px dashed var(--tn-orange) !important;
+  background: #FFF4E3 !important;
+  border-radius: 20px;
+}
+
+/* --- Neon glow on dark headings ------------------------------------ */
+.tn-neon,
+.tn-neon .elementor-heading-title {
+  text-shadow: 0 0 18px rgba(255, 79, 176, 0.55),
+               0 0 44px rgba(183, 120, 255, 0.35);
+}
+
+/* --- Gradient ring around the host photo --------------------------- */
+.tn-ring img {
+  border-radius: 999px;
+  padding: 6px;
+  background: linear-gradient(135deg, #FF4FB0, #B778FF 55%, #FFC63F);
+}
+
+/* --- Countdown (HTML widget) --------------------------------------- */
+.tn-countdown {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.tn-countdown li {
+  min-width: 104px;
+  padding: 16px 18px;
+  border: 1px solid rgba(255, 198, 63, 0.4);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+.tn-countdown .tn-num {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--tn-gold);
+}
+.tn-countdown .tn-lab {
+  display: block;
+  margin-top: 6px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #BBB1D4;
+}
+@media (max-width: 480px) {
+  .tn-countdown li { min-width: 0; width: calc(50% - 6px); }
+  .tn-countdown .tn-num { font-size: 28px; }
+}
+
+/* --- Sticky mobile CTA bar (replaces Elementor Pro "Sticky") -------- */
+.tn-sticky-cta { display: none; }
+@media (max-width: 767px) {
+  .tn-sticky-cta {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    gap: 10px;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(20, 11, 34, 0.96);
+    box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.35);
+  }
+  .tn-sticky-cta a {
+    flex: 1 1 0;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .tn-sticky-cta .tn-buy    { background: var(--tn-gold); color: var(--tn-black); }
+  .tn-sticky-cta .tn-sponsor{ border: 2px solid var(--tn-pink); color: #FFFFFF; }
+  /* keep the footer clear of the bar */
+  body { padding-bottom: 76px; }
+}
+
+/* --- Buttons: consistent pill shape -------------------------------- */
+.tn-btn .elementor-button {
+  border-radius: 999px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.tn-btn .elementor-button:focus-visible {
+  outline: 3px solid var(--tn-gold);
+  outline-offset: 3px;
+}
+
+/* --- Equal-height card rows ---------------------------------------- */
+.tn-equal > .e-con-inner,
+.tn-equal { align-items: stretch; }
+
+/* --- Icon List spacing --------------------------------------------- */
+.tn-list .elementor-icon-list-item { align-items: flex-start; }
+.tn-list .elementor-icon-list-icon { margin-top: 3px; }
+
+/* --- Respect reduced motion ---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .elementor-invisible { visibility: visible !important; animation: none !important; }
+}

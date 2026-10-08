@@ -1,0 +1,58 @@
+<!-- =====================================================================
+     Countdown to Trivia Night — free replacement for Elementor Pro's
+     Countdown widget.
+
+     HOW TO USE
+     1. Drop an Elementor "HTML" widget into the hero section.
+     2. Paste everything below into it.
+     3. The styling lives in additional-css.css (.tn-countdown) — paste that
+        into Appearance → Customize → Additional CSS.
+
+     The target below is 22 January 2027, 18:00 Mountain Time (UTC-07:00).
+     Change the ISO string on the data-target attribute if the time moves.
+     ===================================================================== -->
+
+<ul class="tn-countdown" data-target="2027-01-22T18:00:00-07:00" aria-live="off">
+  <li><span class="tn-num" data-unit="days">—</span><span class="tn-lab">Days</span></li>
+  <li><span class="tn-num" data-unit="hours">—</span><span class="tn-lab">Hours</span></li>
+  <li><span class="tn-num" data-unit="minutes">—</span><span class="tn-lab">Minutes</span></li>
+  <li><span class="tn-num" data-unit="seconds">—</span><span class="tn-lab">Seconds</span></li>
+</ul>
+<p class="tn-countdown-done" style="display:none;font-size:17px;color:#FFC63F;text-align:center;margin-top:12px">
+  It's tonight. See you at Gaslamp on 3rd.
+</p>
+
+<script>
+(function () {
+  var root = document.currentScript.parentNode.querySelector('.tn-countdown');
+  if (!root) return;
+  var done = document.currentScript.parentNode.querySelector('.tn-countdown-done');
+  var target = new Date(root.getAttribute('data-target')).getTime();
+  var cells = {
+    days:    root.querySelector('[data-unit="days"]'),
+    hours:   root.querySelector('[data-unit="hours"]'),
+    minutes: root.querySelector('[data-unit="minutes"]'),
+    seconds: root.querySelector('[data-unit="seconds"]')
+  };
+
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+  function tick() {
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      root.style.display = 'none';
+      if (done) done.style.display = 'block';
+      clearInterval(timer);
+      return;
+    }
+    var s = Math.floor(diff / 1000);
+    cells.days.textContent    = String(Math.floor(s / 86400));
+    cells.hours.textContent   = pad(Math.floor((s % 86400) / 3600));
+    cells.minutes.textContent = pad(Math.floor((s % 3600) / 60));
+    cells.seconds.textContent = pad(s % 60);
+  }
+
+  tick();
+  var timer = setInterval(tick, 1000);
+})();
+</script>
